@@ -1,0 +1,73 @@
+{
+  "navigation": {
+    "home": "首页",
+    "about": "关于我们",
+    "incubator": "孵化器", 
+    "portfolio": "投资组合",
+    "contact": "联系我们",
+    "getStarted": "开始合作"
+  },
+  "home": {
+    "heroTitle": "我们投资于",
+    "heroSubtitle": "改变世界的创始人",
+    "heroDescription": "为AI、移动互联网和游戏领域的早期创新提供动力。",
+    "focusTitle": "我们的投资重点",
+    "focusDescription": "我们投资于正在重塑行业并创造新可能的突破性技术。",
+    "impactTitle": "我们的影响力",
+    "impactDescription": "为种子轮到Pre-A轮的创始人提供资本、专业知识和网络支持。",
+    "ctaTitle": "准备好构建",
+    "ctaSubtitle": "未来？",
+    "ctaDescription": "加入我们的创新创始人投资组合，共同塑造AI、移动互联网和游戏的未来。",
+    "ctaContact": "联系我们",
+    "ctaIncubator": "加入GWI孵化器"
+  },
+  "about": {
+    "heroTitle": "关于",
+    "heroSubtitle": "GWI",
+    "heroDescription": "全球智慧投资是一家专注于AI应用、移动产品和游戏投资机会的风险投资公司。",
+    "missionTitle": "我们的使命",
+    "missionDescription": "我们的使命是为所有利益相关者——包括我们的投资者、投资组合公司和更广泛的社区——创造积极的经济影响和长期价值。",
+    "missionSubtext": "我们在移动互联网行业拥有深厚的专业知识和广泛的网络。",
+    "approachTitle": "我们的方法",
+    "approachDescription": "我们投资于有前景的早期公司——从种子轮到Pre-A轮——这些公司正在构建突破性的技术和产品。",
+    "foundryTitle": "GWI孵化器",
+    "foundryDescription": "我们还与顶级营销合作伙伴合作，运营一个专门的创始人优先孵化器，为产品/技术驱动的初创公司提供资本、资源和市场推广专业知识支持。",
+    "foundrySubtext": "GWI孵化器是我们为产品导向创始人设计的孵化项目。我们与顶级营销公司合作，提供早期资本、战略指导和增长支持。",
+    "foundryButton": "了解更多关于GWI孵化器"
+  },
+  "incubator": {
+    "heroTitle": "GWI",
+    "heroSubtitle": "孵化器",
+    "heroDescription": "GWI孵化器是我们为产品导向创始人设计的孵化项目。",
+    "heroSubtext": "我们与顶级营销公司合作，提供早期资本、战略指导和增长支持。",
+    "offerTitle": "我们提供什么",
+    "offerDescription": "旨在加速您从概念到市场成功之旅的全面支持。",
+    "ctaTitle": "构建",
+    "ctaSubtitle": "下一代",
+    "ctaDescription": "加入一个正在AI、移动互联网和游戏领域创造突破性产品的创新创始人社区。我们一起塑造技术的未来。",
+    "ctaStart": "开始您的旅程",
+    "ctaStories": "查看成功案例"
+  },
+  "contact": {
+    "heroTitle": "让我们一起",
+    "heroSubtitle": "构建",
+    "heroThird": "未来",
+    "heroDescription": "无论您是有着大胆愿景的创始人，还是希望与我们合作的投资者，我们都很乐意与您交流。"
+  },
+  "portfolio": {
+    "filters": {
+      "all": "全部",
+      "technology": "技术", 
+      "healthcare": "医疗健康",
+      "fintech": "金融科技",
+      "sustainability": "可持续发展",
+      "consumer": "消费者"
+    }
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "错误",
+    "learnMore": "了解更多",
+    "readMore": "阅读更多"
+  }
+} 

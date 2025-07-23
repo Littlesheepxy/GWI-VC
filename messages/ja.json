@@ -1,0 +1,73 @@
+{
+  "navigation": {
+    "home": "ホーム",
+    "about": "私たちについて",
+    "incubator": "インキュベーター", 
+    "portfolio": "ポートフォリオ",
+    "contact": "お問い合わせ",
+    "getStarted": "始める"
+  },
+  "home": {
+    "heroTitle": "私たちは投資します",
+    "heroSubtitle": "世界を形作る創設者に",
+    "heroDescription": "AI、モバイル、ゲーム分野における初期段階のイノベーションを支援します。",
+    "focusTitle": "私たちの重点分野",
+    "focusDescription": "業界を再形成し、新たな可能性を創造する画期的な技術に投資しています。",
+    "impactTitle": "私たちのインパクト",
+    "impactDescription": "シードからプリシリーズAまでの創設者に資本、専門知識、ネットワークでサポートを提供します。",
+    "ctaTitle": "準備はできていますか",
+    "ctaSubtitle": "未来を築く？",
+    "ctaDescription": "AI、モバイル、ゲームの未来を形作る革新的な創設者のポートフォリオに参加してください。",
+    "ctaContact": "お問い合わせ",
+    "ctaIncubator": "GWI Foundryに参加"
+  },
+  "about": {
+    "heroTitle": "について",
+    "heroSubtitle": "GWI",
+    "heroDescription": "Global Wise Investmentsは、AIアプリケーション、モバイル製品、ゲームの投資機会に焦点を当てたベンチャーキャピタル会社です。",
+    "missionTitle": "私たちのミッション",
+    "missionDescription": "私たちのミッションは、投資家、ポートフォリオ会社、そしてより広いコミュニティを含むすべてのステークホルダーに対して、ポジティブな経済的インパクトと長期的価値を創造することです。",
+    "missionSubtext": "私たちはモバイルインターネット業界において深い専門知識と幅広いネットワークを持っています。",
+    "approachTitle": "私たちのアプローチ",
+    "approachDescription": "シードからプリシリーズAまでの、画期的な技術と製品を構築している有望な初期段階の企業に投資しています。",
+    "foundryTitle": "GWI Foundry",
+    "foundryDescription": "また、トップティアのマーケティングパートナーと協力して、製品/技術主導のスタートアップに資本、リソース、市場参入の専門知識でサポートを提供する創設者ファーストの専門インキュベーターを運営しています。",
+    "foundrySubtext": "GWI Foundryは、製品重視の創設者向けに設計されたインキュベーションプログラムです。トップマーケティング会社との提携により、初期資本、戦略的ガイダンス、成長サポートを提供しています。",
+    "foundryButton": "GWI Foundryについて詳しく見る"
+  },
+  "incubator": {
+    "heroTitle": "GWI",
+    "heroSubtitle": "Foundry",
+    "heroDescription": "GWI Foundryは、製品重視の創設者向けに設計されたインキュベーションプログラムです。",
+    "heroSubtext": "トップマーケティング会社との提携により、初期資本、戦略的ガイダンス、成長サポートを提供しています。",
+    "offerTitle": "私たちが提供するもの",
+    "offerDescription": "コンセプトから市場成功までの旅を加速するために設計された包括的なサポート。",
+    "ctaTitle": "構築する",
+    "ctaSubtitle": "次世代",
+    "ctaDescription": "AI、モバイル、ゲーム分野で画期的な製品を創造している革新的な創設者のコミュニティに参加してください。一緒に技術の未来を形作りましょう。",
+    "ctaStart": "あなたの旅を始める",
+    "ctaStories": "成功事例を見る"
+  },
+  "contact": {
+    "heroTitle": "一緒に築こう",
+    "heroSubtitle": "未来を",
+    "heroThird": "共に",
+    "heroDescription": "大胆なビジョンを持つ創設者でも、私たちとのパートナーシップを求める投資家でも、ぜひお話を聞かせてください。"
+  },
+  "portfolio": {
+    "filters": {
+      "all": "すべて",
+      "technology": "テクノロジー", 
+      "healthcare": "ヘルスケア",
+      "fintech": "フィンテック",
+      "sustainability": "持続可能性",
+      "consumer": "コンシューマー"
+    }
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "learnMore": "詳しく見る",
+    "readMore": "続きを読む"
+  }
+} 

@@ -1,0 +1,324 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 142 76% 36%;
+    --radius: 0rem; /* 设置为0，移除所有默认圆角 */
+    --font-playfair: "Playfair Display", serif;
+    --font-inter: "Inter", sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    border-radius: 0 !important; /* 强制移除所有圆角 */
+  }
+  body {
+    @apply bg-black text-white;
+    overflow-x: hidden;
+  }
+}
+
+/* 字体类 */
+.font-playfair {
+  font-family: var(--font-playfair);
+}
+
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00a651, #008a44);
+  border-radius: 0; /* 移除滚动条圆角 */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #00c65e, #00a651);
+}
+
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 选择文本样式 */
+::selection {
+  background-color: #00a651;
+  color: white;
+}
+
+/* 细字体的优化 */
+.font-light {
+  font-weight: 300;
+  letter-spacing: 0.025em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 超细字体 */
+.font-thin {
+  font-weight: 200;
+  letter-spacing: 0.05em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 字符间距优化 */
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+
+/* 强制移除所有圆角的工具类 */
+.no-radius,
+.no-radius * {
+  border-radius: 0 !important;
+}
+
+/* 按钮样式 - 确保无圆角 */
+.btn-solid {
+  background-color: #00a651;
+  color: white;
+  border: none;
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+
+.btn-solid:hover {
+  background-color: rgba(0, 166, 81, 0.9);
+  transform: translateY(-3px);
+}
+
+/* 边框透明按钮样式 */
+.btn-ghost {
+  background-color: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+
+.btn-ghost:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+/* 文字按钮样式 */
+.btn-text {
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  padding-bottom: 2px;
+  transition: all 0.3s ease;
+}
+
+.btn-text:hover {
+  color: #00a651;
+  border-bottom-color: #00a651;
+}
+
+/* 输入框底部边框样式 */
+.input-underline {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: transparent;
+}
+
+.input-underline:focus {
+  box-shadow: none;
+  border-color: #00a651;
+  border-radius: 0;
+}
+
+/* 卡片底部边框样式 */
+.card-underline {
+  border-radius: 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: transparent;
+}
+
+.card-underline:hover {
+  border-bottom-color: #00a651;
+}
+
+/* 图片样式 - 移除圆角 */
+img {
+  border-radius: 0 !important;
+}
+
+/* 确保所有可能的圆角元素都被覆盖 */
+.rounded,
+.rounded-sm,
+.rounded-md,
+.rounded-lg,
+.rounded-xl,
+.rounded-2xl,
+.rounded-3xl,
+.rounded-full {
+  border-radius: 0 !important;
+}
+
+/* 自定义动画 */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes mountain-drift {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+  50% {
+    transform: translateX(-2%) scale(1.01);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes silk-flow {
+  0% {
+    transform: translateX(-100%) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateX(100vw) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes cloud-drift {
+  0% {
+    transform: translateX(-10%) scale(1);
+    opacity: 0.05;
+  }
+  50% {
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateX(110%) scale(1.2);
+    opacity: 0.05;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-mountain-drift {
+  animation: mountain-drift 30s ease-in-out infinite;
+}
+
+.animate-silk-flow {
+  animation: silk-flow 20s linear infinite;
+}
+
+.animate-cloud-drift {
+  animation: cloud-drift 35s linear infinite;
+}
+
+/* 背景渐变动画 */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+/* 文字发光效果 */
+.text-glow {
+  text-shadow: 0 0 10px rgba(0, 166, 81, 0.5);
+}
+
+/* 毛玻璃效果 */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+}
+
+/* 3D 变换效果 */
+.transform-3d {
+  transform-style: preserve-3d;
+}
+
+/* 鼠标悬停时的3D效果 */
+.hover-3d:hover {
+  transform: perspective(1000px) rotateX(10deg) rotateY(10deg) translateZ(20px);
+}
+
+/* 衬线字体的优雅样式 */
+.font-playfair {
+  font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* 斜体文字的优雅间距 */
+.italic {
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
