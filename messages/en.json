@@ -13,8 +13,17 @@
     "heroDescription": "Empowering early-stage innovation in AI, Mobile, and Games.",
     "focusTitle": "Our Focus Areas",
     "focusDescription": "We invest in breakthrough technologies that are reshaping industries and creating new possibilities.",
+    "focusAI": "AI Applications",
+    "focusAIDesc": "Next-generation artificial intelligence solutions that enhance human capabilities and automate complex processes.",
+    "focusMobile": "Mobile Innovation",
+    "focusMobileDesc": "Revolutionary mobile experiences that connect billions of users worldwide through intuitive interfaces.",
+    "focusGaming": "Gaming Evolution",
+    "focusGamingDesc": "Immersive gaming experiences that push the boundaries of entertainment and social interaction.",
     "impactTitle": "Our Impact",
     "impactDescription": "Supporting founders from seed to pre-Series A with capital, expertise, and networks.",
+    "statsPortfolio": "Portfolio Companies",
+    "statsCapital": "Capital Deployed",
+    "statsExits": "Successful Exits",
     "ctaTitle": "Ready to Build the",
     "ctaSubtitle": "Future?",
     "ctaDescription": "Join our portfolio of innovative founders who are shaping the future of AI, mobile, and gaming.",
@@ -69,5 +78,12 @@
     "error": "Error",
     "learnMore": "Learn More",
     "readMore": "Read More"
+  },
+  "footer": {
+    "tagline": "Backing Builders of the Future. We invest in promising early-stage companies in AI applications, mobile products, and gaming.",
+    "vision": "Global Vision. Early Impact.",
+    "company": "Company",
+    "contact": "Contact",
+    "rights": "All rights reserved"
   }
 } 

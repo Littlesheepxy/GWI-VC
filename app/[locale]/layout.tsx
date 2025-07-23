@@ -57,9 +57,9 @@ export default async function LocaleLayout({
     <html lang={locale} dir={direction}>
       <body className={`${inter.className} ${playfair.variable}`}>
         <NextIntlClientProvider messages={messages}>
-          <Navigation />
+          <Navigation key={`nav-${locale}`} />
           {children}
-          <Footer />
+          <Footer key={`footer-${locale}`} />
         </NextIntlClientProvider>
       </body>
     </html>

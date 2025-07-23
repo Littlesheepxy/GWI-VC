@@ -4,34 +4,73 @@ import { useLocale } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { usePathname } from 'next/navigation'
 import { ChevronDown, Globe } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect, useTransition } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { locales, localeConfig, type Locale } from '../i18n.config'
 
 export default function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false)
+  const [currentLocale, setCurrentLocale] = useState<Locale>('en')
+  const [isPending, startTransition] = useTransition()
   const locale = useLocale()
   const router = useRouter()
   const pathname = usePathname()
 
+  // 从URL路径中提取当前语言
+  useEffect(() => {
+    const segments = pathname.split('/').filter(Boolean)
+    const urlLocale = segments[0] as Locale
+    
+    // 检查URL中的第一个段是否是有效的语言代码
+    if (locales.includes(urlLocale)) {
+      setCurrentLocale(urlLocale)
+    } else {
+      // 如果URL中没有语言前缀，使用useLocale的值或默认语言
+      setCurrentLocale(locale as Locale || 'en')
+    }
+  }, [pathname, locale])
+
   const handleLocaleChange = (newLocale: Locale) => {
-    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`)
-    router.push(newPath)
+    const segments = pathname.split('/').filter(Boolean)
+    
+    // 如果第一个段是当前语言，替换它
+    if (segments[0] && locales.includes(segments[0] as Locale)) {
+      segments[0] = newLocale
+    } else {
+      // 如果路径不包含语言前缀，添加新语言前缀
+      segments.unshift(newLocale)
+    }
+    
+    const newPath = '/' + segments.join('/')
+    
+    // 先关闭下拉菜单
     setIsOpen(false)
+    
+    // 使用startTransition来优化用户体验
+    startTransition(() => {
+      router.push(newPath)
+      // 强制刷新以确保所有组件重新渲染
+      router.refresh()
+    })
   }
 
-  const currentLanguage = localeConfig[locale as Locale]
+  const currentLanguage = localeConfig[currentLocale]
 
   return (
     <div className="relative">
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-black/20 backdrop-blur-md border border-white/10 text-white hover:bg-white/10 transition-all duration-300"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        disabled={isPending}
+        className={`flex items-center space-x-2 px-4 py-2 rounded-lg bg-black/20 backdrop-blur-md border border-white/10 text-white hover:bg-white/10 transition-all duration-300 ${
+          isPending ? 'opacity-50 cursor-not-allowed' : ''
+        }`}
+        whileHover={{ scale: isPending ? 1 : 1.05 }}
+        whileTap={{ scale: isPending ? 1 : 0.95 }}
       >
         <Globe className="w-4 h-4" />
-        <span className="text-sm font-medium">{currentLanguage.name}</span>
+        <span className="text-sm font-medium">
+          {isPending ? 'Switching...' : (currentLanguage?.name || 'Language')}
+        </span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.2 }}
@@ -41,7 +80,7 @@ export default function LanguageSwitcher() {
       </motion.button>
 
       <AnimatePresence>
-        {isOpen && (
+        {isOpen && !isPending && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -53,10 +92,11 @@ export default function LanguageSwitcher() {
               <motion.button
                 key={loc}
                 onClick={() => handleLocaleChange(loc)}
+                disabled={isPending}
                 className={`w-full px-4 py-2 text-left text-sm hover:bg-white/10 transition-colors duration-200 ${
-                  locale === loc ? 'bg-[#00A651]/20 text-[#00A651]' : 'text-white'
-                }`}
-                whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
+                  currentLocale === loc ? 'bg-[#00A651]/20 text-[#00A651]' : 'text-white'
+                } ${isPending ? 'opacity-50 cursor-not-allowed' : ''}`}
+                whileHover={{ backgroundColor: isPending ? undefined : 'rgba(255, 255, 255, 0.1)' }}
               >
                 {localeConfig[loc].name}
               </motion.button>
@@ -66,7 +106,7 @@ export default function LanguageSwitcher() {
       </AnimatePresence>
 
       {/* Backdrop to close dropdown */}
-      {isOpen && (
+      {isOpen && !isPending && (
         <div
           className="fixed inset-0 z-40"
           onClick={() => setIsOpen(false)}

@@ -4,8 +4,8 @@ import { useState, useEffect } from "react"
 import { motion, useScroll } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
-import { usePathname } from "next/navigation"
-import { useTranslations } from 'next-intl'
+import { usePathname, useRouter } from "next/navigation"
+import { useTranslations, useLocale } from 'next-intl'
 import { Menu, X } from "lucide-react"
 import { CustomButton } from "@/components/ui/custom-button"
 import LanguageSwitcher from "@/components/language-switcher"
@@ -14,7 +14,11 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
+  const locale = useLocale()
+  const router = useRouter()
   const { scrollYProgress } = useScroll()
+  
+  // 使用useTranslations钩子，并添加key属性来强制重新渲染
   const t = useTranslations('navigation')
 
   // 页面是否有 hero 背景图片 - 修复国际化路由判断
@@ -36,16 +40,33 @@ export default function Navigation() {
     }
   }, [])
 
-  const navItems = [
-    { href: "/", label: t('home') },
-    { href: "/about", label: t('about') },
-    { href: "/incubator", label: t('incubator') },
-    { href: "/portfolio", label: t('portfolio') },
-    { href: "/contact", label: t('contact') },
-  ]
+  // 使用当前语言前缀构建导航链接
+  const getLocalizedHref = (path: string) => {
+    return path === "/" ? `/${locale}` : `/${locale}${path}`
+  }
+
+  // 使用useEffect来确保在locale变化时组件重新渲染
+  const [navItems, setNavItems] = useState([
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/incubator", label: "Incubator" },
+    { href: "/portfolio", label: "Portfolio" },
+    { href: "/contact", label: "Contact" },
+  ])
+
+  useEffect(() => {
+    setNavItems([
+      { href: "/", label: t('home') },
+      { href: "/about", label: t('about') },
+      { href: "/incubator", label: t('incubator') },
+      { href: "/portfolio", label: t('portfolio') },
+      { href: "/contact", label: t('contact') },
+    ])
+  }, [locale, t])
 
   return (
     <motion.nav
+      key={locale} // 添加key来强制重新渲染
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
         backgroundColor: `rgba(0, 0, 0, ${hasHeroBackground ? (isScrolled ? 0.95 : 0) : 0.95})`,
@@ -60,7 +81,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between">
           {/* Logo with animation */}
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <Link href="/" className="block">
+            <Link href={getLocalizedHref("/")} className="block">
               <motion.div
                 whileHover={{ filter: "drop-shadow(0 0 20px rgba(0, 166, 81, 0.5))" }}
                 transition={{ duration: 0.3 }}
@@ -79,45 +100,50 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, index) => (
-              <motion.div
-                key={item.href}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Link
-                  href={item.href}
-                  className={`font-inter font-light text-xl transition-all duration-300 relative tracking-wide ${
-                    pathname === item.href || pathname.endsWith(item.href) ? "text-[#00A651]" : "text-gray-300"
-                  }`}
+            {navItems.map((item, index) => {
+              const localizedHref = getLocalizedHref(item.href)
+              const isActive = pathname === localizedHref
+              
+              return (
+                <motion.div
+                  key={item.href}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  {item.label}
-                  {(pathname === item.href || pathname.endsWith(item.href)) ? (
-                    <motion.div
-                      className="absolute -bottom-1 left-0 right-0 h-px bg-[#00A651]"
-                      layoutId="activeTab"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  ) : (
-                    <motion.div
-                      className="absolute -bottom-1 left-0 right-0 h-px bg-white/0 group-hover:bg-white/20"
-                      initial={{ scaleX: 0 }}
-                      whileHover={{ scaleX: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  )}
-                </Link>
-              </motion.div>
-            ))}
+                  <Link
+                    href={localizedHref}
+                    className={`font-inter font-light text-xl transition-all duration-300 relative tracking-wide ${
+                      isActive ? "text-[#00A651]" : "text-gray-300"
+                    }`}
+                  >
+                    {item.label}
+                    {isActive ? (
+                      <motion.div
+                        className="absolute -bottom-1 left-0 right-0 h-px bg-[#00A651]"
+                        layoutId="activeTab"
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    ) : (
+                      <motion.div
+                        className="absolute -bottom-1 left-0 right-0 h-px bg-white/0 group-hover:bg-white/20"
+                        initial={{ scaleX: 0 }}
+                        whileHover={{ scaleX: 1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    )}
+                  </Link>
+                </motion.div>
+              )
+            })}
             
             {/* Language Switcher */}
             <LanguageSwitcher />
             
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <CustomButton href="/contact" variant="solid">
+              <CustomButton href={getLocalizedHref("/contact")} variant="solid">
                 {t('getStarted')}
               </CustomButton>
             </motion.div>
@@ -147,24 +173,29 @@ export default function Navigation() {
           className="md:hidden overflow-hidden"
         >
           <div className="flex flex-col space-y-6 pt-8 pb-4 border-t border-gray-800 mt-6">
-            {navItems.map((item, index) => (
-              <motion.div
-                key={item.href}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: isMobileMenuOpen ? 1 : 0, x: isMobileMenuOpen ? 0 : -20 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <Link
-                  href={item.href}
-                  className={`font-inter font-light text-2xl transition-colors duration-300 hover:text-[#00A651] tracking-wide ${
-                    pathname === item.href || pathname.endsWith(item.href) ? "text-[#00A651]" : "text-gray-300"
-                  }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
+            {navItems.map((item, index) => {
+              const localizedHref = getLocalizedHref(item.href)
+              const isActive = pathname === localizedHref
+              
+              return (
+                <motion.div
+                  key={item.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: isMobileMenuOpen ? 1 : 0, x: isMobileMenuOpen ? 0 : -20 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
-                  {item.label}
-                </Link>
-              </motion.div>
-            ))}
+                  <Link
+                    href={localizedHref}
+                    className={`font-inter font-light text-2xl transition-colors duration-300 hover:text-[#00A651] tracking-wide ${
+                      isActive ? "text-[#00A651]" : "text-gray-300"
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              )
+            })}
             
             {/* Mobile Language Switcher */}
             <motion.div
@@ -180,7 +211,7 @@ export default function Navigation() {
               animate={{ opacity: isMobileMenuOpen ? 1 : 0, y: isMobileMenuOpen ? 0 : 20 }}
               transition={{ duration: 0.3, delay: 0.5 }}
             >
-              <CustomButton href="/contact" variant="solid" className="w-fit">
+              <CustomButton href={getLocalizedHref("/contact")} variant="solid" className="w-fit">
                 {t('getStarted')}
               </CustomButton>
             </motion.div>

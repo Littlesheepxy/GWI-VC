@@ -3,7 +3,8 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Brain, Smartphone, Gamepad2 } from "lucide-react"
+import { useLocale } from 'next-intl'
 import { CustomButton } from "@/components/ui/custom-button"
 
 interface HomeClientProps {
@@ -15,8 +16,17 @@ interface HomeClientProps {
     ctaIncubator: string
     focusTitle: string
     focusDescription: string
+    focusAI: string
+    focusAIDesc: string
+    focusMobile: string
+    focusMobileDesc: string
+    focusGaming: string
+    focusGamingDesc: string
     impactTitle: string
     impactDescription: string
+    statsPortfolio: string
+    statsCapital: string
+    statsExits: string
     ctaTitle: string
     ctaSubtitle: string
     ctaDescription: string
@@ -26,6 +36,12 @@ interface HomeClientProps {
 export default function HomeClient({ translations: t }: HomeClientProps) {
   const { scrollYProgress } = useScroll()
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const locale = useLocale()
+
+  // 构建本地化链接
+  const getLocalizedHref = (path: string) => {
+    return `/${locale}${path}`
+  }
 
   return (
     <div className="relative">
@@ -48,39 +64,49 @@ export default function HomeClient({ translations: t }: HomeClientProps) {
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            style={{ opacity: heroOpacity }}
             className="max-w-6xl mx-auto"
           >
+            {/* Hero Title with Enhanced Typography */}
             <motion.h1
-              className="font-playfair text-6xl md:text-8xl font-light leading-tight tracking-wide text-white mb-8"
+              className="font-playfair text-6xl md:text-8xl font-light text-white mb-8 leading-tight tracking-wide"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, delay: 0.3 }}
+              transition={{ duration: 1.5, type: "spring", delay: 0.8 }}
             >
               {t.heroTitle}
-              <span className="block text-[#00A651] italic font-light mt-4">{t.heroSubtitle}</span>
+              <motion.span 
+                className="block text-[#00A651] italic font-light"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, delay: 1.2 }}
+              >
+                {t.heroSubtitle}
+              </motion.span>
             </motion.h1>
 
+            {/* Hero Description */}
             <motion.p
-              className="font-playfair text-2xl md:text-3xl mb-16 max-w-5xl mx-auto leading-relaxed font-light text-gray-200 italic tracking-wide"
+              className="font-playfair text-2xl md:text-3xl text-gray-300 mb-16 max-w-4xl mx-auto leading-relaxed italic font-light tracking-wide"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              transition={{ duration: 0.8, delay: 1.5 }}
             >
               {t.heroDescription}
             </motion.p>
 
             {/* CTA Buttons */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-8 justify-center items-center"
-              initial={{ opacity: 0, y: 50 }}
+              className="flex flex-col sm:flex-row gap-8 justify-center"
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
+              transition={{ duration: 0.8, delay: 1.8 }}
             >
-              <CustomButton href="/contact" variant="solid" className="text-2xl py-6">
+              <CustomButton href={getLocalizedHref("/contact")} variant="solid" className="text-2xl py-6">
                 {t.ctaContact} <ArrowRight className="ml-4 h-8 w-8" />
               </CustomButton>
-              <CustomButton href="/incubator" variant="ghost" className="text-2xl py-6">
+              <CustomButton href={getLocalizedHref("/incubator")} variant="ghost" className="text-2xl py-6">
                 {t.ctaIncubator}
               </CustomButton>
             </motion.div>
@@ -116,49 +142,52 @@ export default function HomeClient({ translations: t }: HomeClientProps) {
             </p>
           </motion.div>
 
-          {/* Focus Area Cards with Enhanced Animations */}
-          <div className="grid md:grid-cols-3 gap-12">
+          {/* Focus Area Cards with About Page Style */}
+          <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "AI Applications",
-                description: "Next-generation artificial intelligence solutions that enhance human capabilities and automate complex processes.",
-                icon: "🤖",
-                gradient: "from-blue-500/20 to-purple-500/20"
+                icon: Brain,
+                title: t.focusAI,
+                description: t.focusAIDesc
               },
               {
-                title: "Mobile Innovation",
-                description: "Revolutionary mobile experiences that connect billions of users worldwide through intuitive interfaces.",
-                icon: "📱",
-                gradient: "from-green-500/20 to-teal-500/20"
+                icon: Smartphone,
+                title: t.focusMobile,
+                description: t.focusMobileDesc
               },
               {
-                title: "Gaming Evolution",
-                description: "Immersive gaming platforms that push the boundaries of entertainment and social interaction.",
-                icon: "🎮",
-                gradient: "from-red-500/20 to-orange-500/20"
+                icon: Gamepad2,
+                title: t.focusGaming,
+                description: t.focusGamingDesc
               }
-            ].map((area, index) => (
+            ].map((item, index) => (
               <motion.div
-                key={area.title}
-                initial={{ opacity: 0, y: 100 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                key={index}
+                initial={{ opacity: 0, y: 100, rotateX: -30 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05, rotateY: 5 }}
-                className={`relative p-8 rounded-2xl bg-gradient-to-br ${area.gradient} backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-500 group`}
+                className="group cursor-pointer"
+                whileHover={{ scale: 1.05, y: -10 }}
               >
-                <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {area.icon}
+                <div className="bg-transparent backdrop-blur-sm p-8 h-full border-b border-gray-800 hover:border-gray-600 transition-all duration-500 relative overflow-hidden">
+                  <motion.div className="absolute inset-0 bg-[#00A651]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  <motion.div
+                    className="w-20 h-20 bg-gradient-to-br from-gray-800 to-gray-700 flex items-center justify-center mx-auto mb-8 group-hover:shadow-2xl transition-all duration-500"
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.8 }}
+                  >
+                    <item.icon className="h-10 w-10 text-[#00A651] group-hover:scale-110 transition-transform duration-300" />
+                  </motion.div>
+
+                  <h3 className="font-playfair text-2xl font-light text-white mb-6 group-hover:text-[#00A651] transition-colors duration-300 tracking-wide">
+                    {item.title}
+                  </h3>
+                  <p className="font-inter text-gray-400 leading-relaxed text-lg group-hover:text-gray-300 transition-colors duration-300 font-light tracking-wide">
+                    {item.description}
+                  </p>
                 </div>
-                <h3 className="font-playfair text-3xl font-light text-white mb-4 tracking-wide">
-                  {area.title}
-                </h3>
-                <p className="text-gray-300 leading-relaxed font-light">
-                  {area.description}
-                </p>
-                
-                {/* Hover Effect Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#00A651]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
               </motion.div>
             ))}
           </div>
@@ -166,25 +195,26 @@ export default function HomeClient({ translations: t }: HomeClientProps) {
       </section>
 
       {/* Impact Section */}
-      <section className="h-screen bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center relative overflow-hidden">
-        {/* Animated Background Elements */}
+      <section className="h-screen bg-gradient-to-b from-black to-gray-900 flex items-center justify-center relative overflow-hidden">
+        {/* Animated background elements */}
         <div className="absolute inset-0">
-          {[...Array(6)].map((_, i) => (
+          {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-2 h-2 bg-[#00A651]/30 rounded-full"
-              style={{
-                left: `${20 + i * 15}%`,
-                top: `${30 + (i % 2) * 40}%`,
+              className="absolute w-2 h-2 bg-[#00A651] rounded-full opacity-20"
+              initial={{ 
+                x: Math.random() * 1200, 
+                y: Math.random() * 800,
+                scale: 0 
               }}
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.3, 0.8, 0.3],
+              animate={{ 
+                scale: [0, 1, 0],
+                opacity: [0, 0.3, 0]
               }}
-              transition={{
-                duration: 2,
+              transition={{ 
+                duration: Math.random() * 3 + 2,
                 repeat: Infinity,
-                delay: i * 0.5,
+                delay: Math.random() * 2
               }}
             />
           ))}
@@ -192,80 +222,73 @@ export default function HomeClient({ translations: t }: HomeClientProps) {
 
         <div className="container mx-auto px-6 text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
+            initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2 }}
+            transition={{ duration: 1.2, type: "spring" }}
             viewport={{ once: true }}
-            className="mb-20"
+            className="max-w-5xl mx-auto"
           >
-            <h2 className="font-playfair text-6xl md:text-8xl font-light text-white mb-8 tracking-wide">{t.impactTitle}</h2>
-            <p className="font-playfair text-2xl text-gray-300 max-w-4xl mx-auto italic font-light tracking-wide">
-              {t.impactDescription}
-            </p>
-          </motion.div>
+            <motion.h2
+              className="font-playfair text-6xl md:text-8xl font-light text-white mb-12 tracking-wide"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            >
+              {t.impactTitle}
+            </motion.h2>
 
-          {/* Statistics with Animation */}
-          <div className="grid md:grid-cols-3 gap-12">
-            {[
-              { number: "50+", label: "Portfolio Companies", description: "Across AI, Mobile & Gaming" },
-              { number: "$500M+", label: "Total Investment", description: "Supporting Innovation" },
-              { number: "15+", label: "Successful Exits", description: "Creating Lasting Value" }
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 100 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.3 }}
-                viewport={{ once: true }}
-                className="text-center group"
-              >
+            <motion.p
+              className="font-playfair text-2xl md:text-3xl text-gray-300 mb-16 leading-relaxed italic font-light tracking-wide"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              {t.impactDescription}
+            </motion.p>
+
+                         {/* Impact Stats with Animations */}
+             <div className="grid md:grid-cols-3 gap-12 mb-16">
+               {[
+                 { number: "50+", label: t.statsPortfolio, delay: 0.1 },
+                 { number: "$500M+", label: t.statsCapital, delay: 0.3 },
+                 { number: "15+", label: t.statsExits, delay: 0.5 }
+               ].map((stat, index) => (
                 <motion.div
-                  className="font-playfair text-6xl md:text-7xl font-light text-[#00A651] mb-4"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                  key={stat.label}
+                  className="text-center"
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: stat.delay, type: "spring" }}
+                  viewport={{ once: true }}
                 >
-                  {stat.number}
+                  <motion.div
+                    className="font-playfair text-5xl md:text-6xl font-light text-[#00A651] mb-4"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: stat.delay + 0.2 }}
+                    viewport={{ once: true }}
+                  >
+                    {stat.number}
+                  </motion.div>
+                  <div className="font-inter text-xl text-gray-400 font-light tracking-wide">
+                    {stat.label}
+                  </div>
                 </motion.div>
-                <h3 className="font-playfair text-2xl font-light text-white mb-2 tracking-wide">
-                  {stat.label}
-                </h3>
-                <p className="text-gray-400 font-light">
-                  {stat.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="h-screen bg-gradient-to-r from-black via-gray-900 to-black flex items-center justify-center relative overflow-hidden">
-        {/* Background Animation */}
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute w-full h-full opacity-10"
-            style={{
-              background: "radial-gradient(ellipse at center, #00A651 0%, transparent 70%)",
-            }}
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.05, 0.15, 0.05],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        </div>
-
+      <section className="h-screen bg-black flex items-center justify-center relative overflow-hidden">
+        {/* Animated background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-black opacity-80" />
+        
         <div className="container mx-auto px-6 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-          >
+          <motion.div className="max-w-5xl mx-auto">
             <motion.h2
               className="font-playfair text-6xl md:text-8xl font-light mb-12 text-white tracking-wide"
               initial={{ opacity: 0, scale: 0.5 }}
@@ -294,10 +317,10 @@ export default function HomeClient({ translations: t }: HomeClientProps) {
               transition={{ duration: 0.8, delay: 0.8 }}
               viewport={{ once: true }}
             >
-              <CustomButton href="/contact" variant="solid" className="text-2xl py-6">
+              <CustomButton href={getLocalizedHref("/contact")} variant="solid" className="text-2xl py-6">
                 {t.ctaContact} <ArrowRight className="ml-4 h-8 w-8" />
               </CustomButton>
-              <CustomButton href="/incubator" variant="ghost" className="text-2xl py-6">
+              <CustomButton href={getLocalizedHref("/incubator")} variant="ghost" className="text-2xl py-6">
                 {t.ctaIncubator}
               </CustomButton>
             </motion.div>

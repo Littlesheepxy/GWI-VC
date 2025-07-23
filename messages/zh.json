@@ -13,8 +13,17 @@
     "heroDescription": "为AI、移动互联网和游戏领域的早期创新提供动力。",
     "focusTitle": "我们的投资重点",
     "focusDescription": "我们投资于正在重塑行业并创造新可能的突破性技术。",
+    "focusAI": "AI应用",
+    "focusAIDesc": "增强人类能力并自动化复杂流程的下一代人工智能解决方案。",
+    "focusMobile": "移动创新",
+    "focusMobileDesc": "通过直观界面连接全球数十亿用户的革命性移动体验。",
+    "focusGaming": "游戏进化",
+    "focusGamingDesc": "突破娱乐和社交互动边界的沉浸式游戏体验。",
     "impactTitle": "我们的影响力",
     "impactDescription": "为种子轮到Pre-A轮的创始人提供资本、专业知识和网络支持。",
+    "statsPortfolio": "投资组合公司",
+    "statsCapital": "部署资本",
+    "statsExits": "成功退出",
     "ctaTitle": "准备好构建",
     "ctaSubtitle": "未来？",
     "ctaDescription": "加入我们的创新创始人投资组合，共同塑造AI、移动互联网和游戏的未来。",
@@ -69,5 +78,12 @@
     "error": "错误",
     "learnMore": "了解更多",
     "readMore": "阅读更多"
+  },
+  "footer": {
+    "tagline": "支持未来的建设者。我们投资于AI应用、移动产品和游戏领域有前景的早期公司。",
+    "vision": "全球视野。早期影响。",
+    "company": "公司",
+    "contact": "联系方式",
+    "rights": "版权所有"
   }
 } 
