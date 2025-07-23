@@ -41,10 +41,7 @@ export default function LanguageSwitcher() {
     }
     
     const newPath = '/' + segments.join('/')
-    
-    // 使用 window.location.href 来确保完全重新加载页面，这样所有组件都会重新渲染
-    // 这样可以确保客户端组件获取到新的翻译内容
-    window.location.href = newPath
+    router.push(newPath)
     setIsOpen(false)
   }
 

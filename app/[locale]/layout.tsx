@@ -5,8 +5,8 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import "../globals.css"
-import Navigation from "@/components/navigation"
-import Footer from "@/components/footer"
+import NavigationWrapper from "@/components/navigation-wrapper"
+import FooterWrapper from "@/components/footer-wrapper"
 import { locales, localeConfig, type Locale } from "../../i18n.config"
 
 const playfair = Playfair_Display({
@@ -57,9 +57,9 @@ export default async function LocaleLayout({
     <html lang={locale} dir={direction}>
       <body className={`${inter.className} ${playfair.variable}`}>
         <NextIntlClientProvider messages={messages}>
-          <Navigation />
+          <NavigationWrapper locale={locale} />
           {children}
-          <Footer />
+          <FooterWrapper locale={locale} />
         </NextIntlClientProvider>
       </body>
     </html>
