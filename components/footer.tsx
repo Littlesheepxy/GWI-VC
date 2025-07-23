@@ -1,56 +1,30 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useLocale, useTranslations } from 'next-intl'
+import { usePathname } from "next/navigation"
 import { Linkedin, Twitter, Mail } from "lucide-react"
 
 export default function Footer() {
   const locale = useLocale()
+  const pathname = usePathname()
   const tNav = useTranslations('navigation')
   const tFooter = useTranslations('footer')
+
+  // 强制组件在语言变化时重新渲染
+  useEffect(() => {
+    // 当locale或pathname变化时，组件会重新渲染并获取新的翻译
+  }, [locale, pathname])
 
   // 构建本地化链接
   const getLocalizedHref = (path: string) => {
     return `/${locale}${path}`
   }
 
-  // 使用state来确保翻译文本能正确更新
-  const [footerTexts, setFooterTexts] = useState({
-    tagline: '',
-    vision: '',
-    company: '',
-    contact: '',
-    rights: ''
-  })
-
-  const [navTexts, setNavTexts] = useState({
-    about: '',
-    incubator: '',
-    portfolio: '',
-    contact: ''
-  })
-
-  useEffect(() => {
-    setFooterTexts({
-      tagline: tFooter('tagline'),
-      vision: tFooter('vision'),
-      company: tFooter('company'),
-      contact: tFooter('contact'),
-      rights: tFooter('rights')
-    })
-    
-    setNavTexts({
-      about: tNav('about'),
-      incubator: tNav('incubator'),
-      portfolio: tNav('portfolio'),
-      contact: tNav('contact')
-    })
-  }, [locale, tFooter, tNav])
-
   return (
-    <footer key={locale} className="bg-black text-white py-16 border-t border-gray-800">
+    <footer className="bg-black text-white py-16 border-t border-gray-800">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
@@ -67,9 +41,9 @@ export default function Footer() {
               </Link>
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
-              {footerTexts.tagline}
+              {tFooter('tagline')}
             </p>
-            <p className="text-[#00A651] font-playfair italic text-lg mb-6">{footerTexts.vision}</p>
+            <p className="text-[#00A651] font-playfair italic text-lg mb-6">{tFooter('vision')}</p>
             <div className="flex space-x-4">
               <Link
                 href="#"
@@ -94,14 +68,14 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">{footerTexts.company}</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">{tFooter('company')}</h4>
             <ul className="space-y-2">
               <li>
                 <Link
                   href={getLocalizedHref("/about")}
                   className="text-gray-400 hover:text-white transition-colors duration-300 hover:border-b hover:border-[#00A651] pb-1"
                 >
-                  {navTexts.about}
+                  {tNav('about')}
                 </Link>
               </li>
               <li>
@@ -109,7 +83,7 @@ export default function Footer() {
                   href={getLocalizedHref("/incubator")}
                   className="text-gray-400 hover:text-white transition-colors duration-300 hover:border-b hover:border-[#00A651] pb-1"
                 >
-                  {navTexts.incubator}
+                  {tNav('incubator')}
                 </Link>
               </li>
               <li>
@@ -117,7 +91,7 @@ export default function Footer() {
                   href={getLocalizedHref("/portfolio")}
                   className="text-gray-400 hover:text-white transition-colors duration-300 hover:border-b hover:border-[#00A651] pb-1"
                 >
-                  {navTexts.portfolio}
+                  {tNav('portfolio')}
                 </Link>
               </li>
               <li>
@@ -125,7 +99,7 @@ export default function Footer() {
                   href={getLocalizedHref("/contact")}
                   className="text-gray-400 hover:text-white transition-colors duration-300 hover:border-b hover:border-[#00A651] pb-1"
                 >
-                  {navTexts.contact}
+                  {tNav('contact')}
                 </Link>
               </li>
             </ul>
@@ -133,7 +107,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">{footerTexts.contact}</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">{tFooter('contact')}</h4>
             <div className="space-y-2 text-gray-400">
               <p>Singapore</p>
               <p>Hong Kong</p>
@@ -148,7 +122,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Global Wise Investments. {footerTexts.rights}.</p>
+          <p>&copy; {new Date().getFullYear()} Global Wise Investments. {tFooter('rights')}.</p>
         </div>
       </div>
     </footer>

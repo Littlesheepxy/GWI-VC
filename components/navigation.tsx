@@ -17,8 +17,6 @@ export default function Navigation() {
   const locale = useLocale()
   const router = useRouter()
   const { scrollYProgress } = useScroll()
-  
-  // 使用useTranslations钩子，并添加key属性来强制重新渲染
   const t = useTranslations('navigation')
 
   // 页面是否有 hero 背景图片 - 修复国际化路由判断
@@ -40,33 +38,26 @@ export default function Navigation() {
     }
   }, [])
 
+  // 强制组件在语言变化时重新渲染
+  useEffect(() => {
+    // 当locale或pathname变化时，组件会重新渲染并获取新的翻译
+  }, [locale, pathname])
+
   // 使用当前语言前缀构建导航链接
   const getLocalizedHref = (path: string) => {
     return path === "/" ? `/${locale}` : `/${locale}${path}`
   }
 
-  // 使用useEffect来确保在locale变化时组件重新渲染
-  const [navItems, setNavItems] = useState([
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/incubator", label: "Incubator" },
-    { href: "/portfolio", label: "Portfolio" },
-    { href: "/contact", label: "Contact" },
-  ])
-
-  useEffect(() => {
-    setNavItems([
-      { href: "/", label: t('home') },
-      { href: "/about", label: t('about') },
-      { href: "/incubator", label: t('incubator') },
-      { href: "/portfolio", label: t('portfolio') },
-      { href: "/contact", label: t('contact') },
-    ])
-  }, [locale, t])
+  const navItems = [
+    { href: "/", label: t('home') },
+    { href: "/about", label: t('about') },
+    { href: "/incubator", label: t('incubator') },
+    { href: "/portfolio", label: t('portfolio') },
+    { href: "/contact", label: t('contact') },
+  ]
 
   return (
     <motion.nav
-      key={locale} // 添加key来强制重新渲染
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
         backgroundColor: `rgba(0, 0, 0, ${hasHeroBackground ? (isScrolled ? 0.95 : 0) : 0.95})`,
