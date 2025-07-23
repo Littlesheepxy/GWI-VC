@@ -13,6 +13,7 @@ export default async function NavigationWrapper({ locale }: Props) {
     about: t('about'),
     incubator: t('incubator'),
     portfolio: t('portfolio'),
+    team: t('team'),
     contact: t('contact'),
     getStarted: t('getStarted'),
   }

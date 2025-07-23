@@ -15,6 +15,7 @@ interface NavigationClientProps {
     about: string
     incubator: string
     portfolio: string
+    team: string
     contact: string
     getStarted: string
   }
@@ -56,6 +57,7 @@ export default function NavigationClient({ translations: t, locale }: Navigation
     { href: "/about", label: t.about },
     { href: "/incubator", label: t.incubator },
     { href: "/portfolio", label: t.portfolio },
+    { href: "/team", label: t.team },
     { href: "/contact", label: t.contact },
   ]
 
