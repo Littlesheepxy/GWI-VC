@@ -6,6 +6,10 @@ import Image from "next/image"
 import { ArrowRight, Brain, Smartphone, Gamepad2 } from "lucide-react"
 import { useLocale } from 'next-intl'
 import { CustomButton } from "@/components/ui/custom-button"
+import { VideoHero } from "@/components/ui/video-hero"
+import { AnimatedNumber, FinancialNumber } from "@/components/ui/animated-number"
+import { Card3D } from "@/components/ui/card-3d"
+import { useMouseGlowContext } from "@/components/ui/mouse-glow-provider"
 
 interface HomeClientProps {
   translations: {
@@ -37,6 +41,7 @@ export default function HomeClient({ translations: t }: HomeClientProps) {
   const { scrollYProgress } = useScroll()
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
   const locale = useLocale()
+  const { handlers } = useMouseGlowContext()
 
   // 构建本地化链接
   const getLocalizedHref = (path: string) => {
@@ -45,28 +50,22 @@ export default function HomeClient({ translations: t }: HomeClientProps) {
 
   return (
     <div className="relative">
-      {/* Hero Section - 与其他页面保持一致的样式 */}
-      <section className="h-screen bg-black flex items-center justify-center relative overflow-hidden">
-        {/* 背景图片 - 使用与 about 页面相同的地球夜景 */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/earth-night-lights.jpg"
+      {/* Hero Section - 使用新的VideoHero组件 */}
+      <VideoHero
+        videoSrc="/videos/hero-earth"
+        posterSrc="/images/earth-night-lights.jpg"
+        fallbackSrc="/images/earth-night-lights.jpg"
             alt="Earth at night showing city lights from space"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20" />
-        </div>
-
-        <div className="container mx-auto px-6 text-center relative z-10">
+        overlayOpacity={0.3}
+        enableParallax={true}
+      >
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
             style={{ opacity: heroOpacity }}
             className="max-w-6xl mx-auto"
+          {...handlers}
           >
             {/* Hero Title with Enhanced Typography */}
             <motion.h1
@@ -111,8 +110,7 @@ export default function HomeClient({ translations: t }: HomeClientProps) {
               </CustomButton>
             </motion.div>
           </motion.div>
-        </div>
-      </section>
+      </VideoHero>
 
       {/* Focus Areas Section */}
       <section className="h-screen bg-black flex items-center justify-center relative overflow-hidden">
@@ -133,6 +131,7 @@ export default function HomeClient({ translations: t }: HomeClientProps) {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
             className="text-center mb-20"
+            {...handlers}
           >
             <h2 className="font-playfair text-6xl md:text-8xl font-light text-white mb-8 tracking-wide">
               {t.focusTitle}
@@ -142,7 +141,7 @@ export default function HomeClient({ translations: t }: HomeClientProps) {
             </p>
           </motion.div>
 
-          {/* Focus Area Cards with About Page Style */}
+          {/* Focus Area Cards with 3D Effects */}
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
@@ -167,10 +166,15 @@ export default function HomeClient({ translations: t }: HomeClientProps) {
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="group cursor-pointer"
-                whileHover={{ scale: 1.05, y: -10 }}
+                className="group"
               >
-                <div className="bg-transparent backdrop-blur-sm p-8 h-full border-b border-gray-800 hover:border-gray-600 transition-all duration-500 relative overflow-hidden">
+                <Card3D
+                  className="bg-transparent backdrop-blur-sm border-b border-gray-800 hover:border-gray-600 transition-all duration-500 relative overflow-hidden h-full"
+                  tiltAngle={10}
+                  hoverScale={1.02}
+                  {...handlers}
+                >
+                  <div className="p-8">
                   <motion.div className="absolute inset-0 bg-[#00A651]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   <motion.div
@@ -188,13 +192,14 @@ export default function HomeClient({ translations: t }: HomeClientProps) {
                     {item.description}
                   </p>
                 </div>
+                </Card3D>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Impact Section */}
+      {/* Impact Section with Animated Numbers */}
       <section className="h-screen bg-gradient-to-b from-black to-gray-900 flex items-center justify-center relative overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0">
@@ -220,7 +225,7 @@ export default function HomeClient({ translations: t }: HomeClientProps) {
           ))}
         </div>
 
-        <div className="container mx-auto px-6 text-center relative z-10">
+        <div className="container mx-auto px-6 text-center relative z-10" {...handlers}>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -248,12 +253,12 @@ export default function HomeClient({ translations: t }: HomeClientProps) {
               {t.impactDescription}
             </motion.p>
 
-                         {/* Impact Stats with Animations */}
+            {/* Impact Stats with Animated Numbers */}
              <div className="grid md:grid-cols-3 gap-12 mb-16">
                {[
-                 { number: "50+", label: t.statsPortfolio, delay: 0.1 },
-                 { number: "$500M+", label: t.statsCapital, delay: 0.3 },
-                 { number: "15+", label: t.statsExits, delay: 0.5 }
+                { number: 50, label: t.statsPortfolio, delay: 0.1 },
+                { number: 500, label: t.statsCapital, delay: 0.3, isFinancial: true },
+                { number: 15, label: t.statsExits, delay: 0.5 }
                ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
@@ -270,7 +275,20 @@ export default function HomeClient({ translations: t }: HomeClientProps) {
                     transition={{ duration: 0.6, delay: stat.delay + 0.2 }}
                     viewport={{ once: true }}
                   >
-                    {stat.number}
+                    {stat.isFinancial ? (
+                      <FinancialNumber 
+                        value={stat.number} 
+                        delay={stat.delay + 0.3}
+                        className="font-playfair text-5xl md:text-6xl font-light text-[#00A651]"
+                      />
+                    ) : (
+                      <AnimatedNumber 
+                        value={stat.number} 
+                        suffix="+"
+                        delay={stat.delay + 0.3}
+                        className="font-playfair text-5xl md:text-6xl font-light text-[#00A651]"
+                      />
+                    )}
                   </motion.div>
                   <div className="font-inter text-xl text-gray-400 font-light tracking-wide">
                     {stat.label}
@@ -287,7 +305,7 @@ export default function HomeClient({ translations: t }: HomeClientProps) {
         {/* Animated background gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-black opacity-80" />
         
-        <div className="container mx-auto px-6 text-center relative z-10">
+        <div className="container mx-auto px-6 text-center relative z-10" {...handlers}>
           <motion.div className="max-w-5xl mx-auto">
             <motion.h2
               className="font-playfair text-6xl md:text-8xl font-light mb-12 text-white tracking-wide"

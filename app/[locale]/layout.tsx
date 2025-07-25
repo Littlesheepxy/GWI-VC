@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Playfair_Display, Inter } from "next/font/google"
+import { MouseGlowProvider } from '@/components/ui/mouse-glow-provider'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
@@ -54,12 +55,16 @@ export default async function LocaleLayout({
   const direction = localeConfig[locale as Locale]?.direction || 'ltr'
 
   return (
-    <html lang={locale} dir={direction}>
-      <body className={`${inter.className} ${playfair.variable}`}>
+      <html lang={locale} dir={direction} suppressHydrationWarning>
+        <body className={`${inter.variable} ${playfair.variable}`}>
         <NextIntlClientProvider messages={messages}>
+            <MouseGlowProvider enabled={true}>
           <NavigationWrapper locale={locale} />
+              <main>
           {children}
+              </main>
           <FooterWrapper locale={locale} />
+            </MouseGlowProvider>
         </NextIntlClientProvider>
       </body>
     </html>

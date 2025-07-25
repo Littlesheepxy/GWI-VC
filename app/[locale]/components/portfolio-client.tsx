@@ -4,6 +4,10 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { Filter, ExternalLink } from "lucide-react"
 import Image from "next/image"
+import { VideoHero } from "@/components/ui/video-hero"
+import { AnimatedNumber } from "@/components/ui/animated-number"
+import { PortfolioCard3D, StatCard3D } from "@/components/ui/card-3d"
+import { useMouseGlowContext } from "@/components/ui/mouse-glow-provider"
 
 interface PortfolioClientProps {
   translations: {
@@ -11,11 +15,9 @@ interface PortfolioClientProps {
     heroSubtitle: string
     heroDescription: string
     filterAll: string
-    filterTechnology: string
-    filterHealthcare: string
-    filterFintech: string
-    filterSustainability: string
-    filterConsumer: string
+    filterAI: string
+    filterMobile: string
+    filterGaming: string
     successTitle: string
     successDescription: string
     stat1Number: string
@@ -29,89 +31,83 @@ interface PortfolioClientProps {
 
 export default function PortfolioClient({ translations: t }: PortfolioClientProps) {
   const [activeFilter, setActiveFilter] = useState("All")
+  const { handlers } = useMouseGlowContext()
 
   const filters = [
     { key: "All", label: t.filterAll },
-    { key: "Technology", label: t.filterTechnology },
-    { key: "Healthcare", label: t.filterHealthcare },
-    { key: "Fintech", label: t.filterFintech },
-    { key: "Sustainability", label: t.filterSustainability },
-    { key: "Consumer", label: t.filterConsumer }
+    { key: "AI", label: t.filterAI },
+    { key: "Mobile", label: t.filterMobile },
+    { key: "Gaming", label: t.filterGaming }
   ]
 
   const portfolioCompanies = [
+          // AI应用类别 (3个项目)
+      {
+        name: "AI_COMPANY_1_NAME",
+        category: "AI",
+        description: "AI_COMPANY_1_DESCRIPTION",
+        stage: "Series A",
+        logo: "/images/portfolio/ai-company-1-logo.svg",
+        website: "https://ai-company-1.com",
+      },
+      {
+        name: "AI_COMPANY_2_NAME", 
+        category: "AI",
+        description: "AI_COMPANY_2_DESCRIPTION",
+        stage: "Seed",
+        logo: "/images/portfolio/ai-company-2-logo.svg",
+        website: "https://ai-company-2.com",
+      },
+      {
+        name: "AI_COMPANY_3_NAME",
+        category: "AI", 
+        description: "AI_COMPANY_3_DESCRIPTION",
+        stage: "Pre-A",
+        logo: "/images/portfolio/ai-company-3-logo.svg",
+        website: "https://ai-company-3.com",
+      },
+    // 移动应用类别 (3个项目)
     {
-      name: "NeuralTech",
-      category: "Technology",
-      description: "AI-powered automation platform for enterprise workflows",
-      stage: "Series B",
-      logo: "/placeholder.svg?height=100&width=100",
-      website: "#",
-    },
-    {
-      name: "BioGenesis",
-      category: "Healthcare",
-      description: "Gene therapy solutions for rare diseases",
+      name: "brave",
+      category: "Mobile",
+      description: "Secure, Fast & Private Web Browser with Adblocker", 
       stage: "Series A",
-      logo: "/placeholder.svg?height=100&width=100",
-      website: "#",
+              logo: "/images/portfolio/brave-logo.svg",
+      website: "https://brave.com/",
     },
     {
-      name: "GreenEnergy",
-      category: "Sustainability",
-      description: "Next-generation solar panel technology",
-      stage: "Series C",
-      logo: "/placeholder.svg?height=100&width=100",
-      website: "#",
-    },
-    {
-      name: "PayFlow",
-      category: "Fintech",
-      description: "Cross-border payment infrastructure for emerging markets",
-      stage: "Series B",
-      logo: "/placeholder.svg?height=100&width=100",
-      website: "#",
-    },
-    {
-      name: "FoodTech",
-      category: "Consumer",
-      description: "Plant-based protein alternatives",
+      name: "Kiavi",
+      category: "Mobile",
+      description: "Financing built for the speed of real estate investing",
       stage: "Series A",
-      logo: "/placeholder.svg?height=100&width=100",
-      website: "#",
+              logo: "/images/portfolio/kiavi-logo.svg", 
+      website: "https://mobile-company-2.com",
     },
     {
-      name: "MedAI",
-      category: "Healthcare",
-      description: "AI-powered diagnostic imaging platform",
-      stage: "Series B",
-      logo: "/placeholder.svg?height=100&width=100",
-      website: "#",
+      name: "STRYD",
+      category: "Mobile",
+      description: "Stryd is a wearable device that clips onto your shoe, and communicates with your running watch or phone. Stryd helps you run the right intensity to balance your training, recovery, and performance by alerting you to slow down or speed up.",
+      stage: "Pre-A",
+              logo: "/images/portfolio/stryd-logo.svg",
+      website: "https://www.stryd.com",
     },
+    // 游戏类别 (2个项目)
     {
-      name: "CyberShield",
-      category: "Technology",
-      description: "Advanced cybersecurity for cloud infrastructure",
-      stage: "Series A",
-      logo: "/placeholder.svg?height=100&width=100",
-      website: "#",
+      name: "stori",
+      category: "Mobile",
+      description: "Stori is a fast‑growing Mexican fintech unicorn that provides near‑universal approval digital credit cards and high‑yield savings accounts to Mexico’s underserved consumers through a mobile-first platform, with over 3 million clients and recent funding exceeding US $212 million to fuel LatAm expansion",
+      stage: "Series D", 
+              logo: "/images/portfolio/stori-logo.svg",
+      website: "https://www.storicard.com",
     },
-    {
-      name: "CleanWater",
-      category: "Sustainability",
-      description: "Water purification technology for developing regions",
-      stage: "Seed",
-      logo: "/placeholder.svg?height=100&width=100",
-      website: "#",
-    },
-    {
-      name: "CryptoVault",
-      category: "Fintech",
-      description: "Institutional cryptocurrency custody solutions",
-      stage: "Series B",
-      logo: "/placeholder.svg?height=100&width=100",
-      website: "#",
-    },
+          {
+        name: "GAMING_COMPANY_2_NAME",
+        category: "Gaming",
+        description: "GAMING_COMPANY_2_DESCRIPTION",
+        stage: "Seed",
+        logo: "/images/portfolio/gaming-company-2-logo.svg",
+        website: "https://gaming-company-2.com", 
+      },
   ]
 
   const filteredCompanies =
@@ -121,27 +117,21 @@ export default function PortfolioClient({ translations: t }: PortfolioClientProp
 
   return (
     <div className="min-h-screen bg-black">
-      {/* Hero Section - 全屏 */}
-      <section className="h-screen bg-black flex items-center justify-center relative overflow-hidden">
-        {/* 背景图片 - 登山者 */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/hero-portfolio.jpg"
+      {/* Hero Section - 使用VideoHero组件 */}
+      <VideoHero
+        videoSrc="/videos/hero-portfolio"
+        posterSrc="/images/hero-portfolio.jpg"
+        fallbackSrc="/images/hero-portfolio.jpg"
             alt="Mountain climber standing above the clouds representing achievement and success"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/40" />
-        </div>
-
-        <div className="container mx-auto px-6 text-center relative z-10">
+        overlayOpacity={0.5}
+        enableParallax={true}
+      >
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             className="max-w-6xl mx-auto"
+          {...handlers}
           >
             <motion.h1
               className="font-playfair text-6xl md:text-8xl font-light text-white mb-8 leading-tight tracking-wide"
@@ -161,8 +151,7 @@ export default function PortfolioClient({ translations: t }: PortfolioClientProp
               {t.heroDescription}
             </motion.p>
           </motion.div>
-        </div>
-      </section>
+      </VideoHero>
 
       {/* Filter Section */}
       <section className="py-16 bg-gray-900/50 border-b border-gray-800">
@@ -177,6 +166,7 @@ export default function PortfolioClient({ translations: t }: PortfolioClientProp
                     ? "text-[#00A651] border-b border-[#00A651]"
                     : "text-gray-300 border-b border-transparent hover:border-gray-600"
                 }`}
+                {...handlers}
               >
                 <Filter className="w-5 h-5 mr-3" />
                 {filter.label}
@@ -224,10 +214,10 @@ export default function PortfolioClient({ translations: t }: PortfolioClientProp
                 animate={{ opacity: 1, scale: 1, rotateX: 0 }}
                 exit={{ opacity: 0, scale: 0.9, rotateX: -30 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group cursor-pointer"
-                whileHover={{ scale: 1.02, y: -10 }}
+                className="group"
               >
-                <div className="bg-transparent p-10 border-b border-gray-800 hover:border-[#00A651] transition-all duration-500 relative overflow-hidden h-full">
+                <PortfolioCard3D {...handlers}>
+                  <div className="p-10 h-full">
                   <motion.div className="absolute inset-0 bg-[#00A651]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   <div className="flex items-center justify-between mb-8">
@@ -261,6 +251,7 @@ export default function PortfolioClient({ translations: t }: PortfolioClientProp
                     </div>
                   </div>
                 </div>
+                </PortfolioCard3D>
               </motion.div>
             ))}
           </motion.div>
@@ -295,7 +286,7 @@ export default function PortfolioClient({ translations: t }: PortfolioClientProp
           ))}
         </div>
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 relative z-10" {...handlers}>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -316,14 +307,17 @@ export default function PortfolioClient({ translations: t }: PortfolioClientProp
               {
                 metric: t.stat1Number,
                 description: t.stat1Label,
+                number: 250
               },
               {
                 metric: t.stat2Number,
                 description: t.stat2Label,
+                number: 85
               },
               {
                 metric: t.stat3Number,
                 description: t.stat3Label,
+                number: 15
               },
             ].map((stat, index) => (
               <motion.div
@@ -333,21 +327,21 @@ export default function PortfolioClient({ translations: t }: PortfolioClientProp
                 transition={{ duration: 0.8, delay: index * 0.3 }}
                 viewport={{ once: true }}
                 className="group"
-                whileHover={{ scale: 1.05, y: -10 }}
               >
-                <div className="bg-gray-900/50 backdrop-blur-sm p-12 border border-gray-800 hover:border-[#00A651] transition-all duration-500 text-center relative overflow-hidden">
+                <StatCard3D {...handlers}>
+                  <div className="p-12 text-center relative overflow-hidden">
                   <motion.div className="absolute inset-0 bg-[#00A651]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <motion.div
-                    className="font-playfair text-5xl md:text-7xl font-light text-[#00A651] mb-6 tracking-wide"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ duration: 0.6, delay: index * 0.3 + 0.5, type: "spring" }}
-                    viewport={{ once: true }}
-                  >
-                    {stat.metric}
-                  </motion.div>
+                    
+                    <AnimatedNumber
+                      value={stat.number}
+                      suffix={stat.metric.includes('%') ? '%' : stat.metric.includes('+') ? '+' : ''}
+                      delay={index * 0.3 + 0.5}
+                      className="font-playfair text-5xl md:text-7xl font-light text-[#00A651] mb-6 tracking-wide block"
+                    />
+                    
                   <p className="font-inter text-gray-400 font-light tracking-wide text-lg">{stat.description}</p>
                 </div>
+                </StatCard3D>
               </motion.div>
             ))}
           </div>
