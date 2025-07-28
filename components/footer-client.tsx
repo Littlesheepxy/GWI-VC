@@ -128,7 +128,7 @@ export default function FooterClient({ translations: t, locale }: FooterClientPr
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Global Wise Investments. {t.footer.rights}.</p>
+          <p>&copy; {new Date().getFullYear()} TEST. {t.footer.rights}.</p>
         </div>
       </div>
     </footer>
