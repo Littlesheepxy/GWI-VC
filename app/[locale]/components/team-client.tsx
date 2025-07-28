@@ -26,16 +26,16 @@ export default function TeamClient({ translations: t }: TeamClientProps) {
       image: "/placeholder.svg?height=500&width=400",
       linkedin: "#",
       twitter: "#",
-      email: "sarah@gwi.vc",
+      email: "sarah@TEST.vc",
     },
     {
       name: "Michael Rodriguez",
       role: "General Partner",
-      bio: "Ex-McKinsey partner and serial entrepreneur. Founded 2 successful startups before joining GWI.",
+      bio: "Ex-McKinsey partner and serial entrepreneur. Founded 2 successful startups before joining TEST.",
       image: "/placeholder.svg?height=500&width=400",
       linkedin: "#",
       twitter: "#",
-      email: "michael@gwi.vc",
+      email: "michael@TEST.vc",
     },
     {
       name: "Dr. Priya Patel",
@@ -44,7 +44,7 @@ export default function TeamClient({ translations: t }: TeamClientProps) {
       image: "/placeholder.svg?height=500&width=400",
       linkedin: "#",
       twitter: "#",
-      email: "priya@gwi.vc",
+      email: "priya@TEST.vc",
     },
     {
       name: "James Thompson",
@@ -53,7 +53,7 @@ export default function TeamClient({ translations: t }: TeamClientProps) {
       image: "/placeholder.svg?height=500&width=400",
       linkedin: "#",
       twitter: "#",
-      email: "james@gwi.vc",
+      email: "james@TEST.vc",
     },
     {
       name: "Lisa Wang",
@@ -62,7 +62,7 @@ export default function TeamClient({ translations: t }: TeamClientProps) {
       image: "/placeholder.svg?height=500&width=400",
       linkedin: "#",
       twitter: "#",
-      email: "lisa@gwi.vc",
+      email: "lisa@TEST.vc",
     },
     {
       name: "David Kim",
@@ -71,7 +71,7 @@ export default function TeamClient({ translations: t }: TeamClientProps) {
       image: "/placeholder.svg?height=500&width=400",
       linkedin: "#",
       twitter: "#",
-      email: "david@gwi.vc",
+      email: "david@TEST.vc",
     },
   ]
 
@@ -314,7 +314,7 @@ export default function TeamClient({ translations: t }: TeamClientProps) {
               transition={{ duration: 0.8, delay: 0.8 }}
               viewport={{ once: true }}
             >
-              <CustomButton href="mailto:careers@gwi.vc" variant="solid" className="text-2xl py-6">
+              <CustomButton href="mailto:careers@TEST.vc" variant="solid" className="text-2xl py-6">
                 {t.joinButton}
               </CustomButton>
             </motion.div>

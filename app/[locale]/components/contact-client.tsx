@@ -257,8 +257,8 @@ export default function ContactClient({ translations: t }: ContactClientProps) {
             >
               <div className="relative">
                 <Image
-                  src="/images/gwi-office.jpg"
-                  alt="GWI Team - Reaching new summits in venture capital"
+                  src="/images/TEST-office.jpg"
+                  alt="TEST Team - Reaching new summits in venture capital"
                   width={700}
                   height={500}
                   className="shadow-2xl object-cover rounded-lg"
@@ -309,8 +309,8 @@ export default function ContactClient({ translations: t }: ContactClientProps) {
                     <div>
                       <h4 className="font-playfair text-xl font-light text-white mb-2 tracking-wide">{t.emailLabel}</h4>
                       <p className="font-inter text-gray-400 font-light tracking-wide text-lg">
-                        <a href="mailto:hello@gwi.vc" className="hover:text-white transition-colors">
-                          hello@gwi.vc
+                        <a href="mailto:hello@TEST.vc" className="hover:text-white transition-colors">
+                          hello@TEST.vc
                         </a>
                       </p>
                     </div>
@@ -385,12 +385,12 @@ export default function ContactClient({ translations: t }: ContactClientProps) {
               viewport={{ once: true }}
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <CustomButton href="mailto:founders@gwi.vc" variant="solid" className="text-2xl py-6">
+                <CustomButton href="mailto:founders@TEST.vc" variant="solid" className="text-2xl py-6">
                   {t.ctaFounders}
                 </CustomButton>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <CustomButton href="mailto:investors@gwi.vc" variant="ghost" className="text-2xl py-6">
+                <CustomButton href="mailto:investors@TEST.vc" variant="ghost" className="text-2xl py-6">
                   {t.ctaInvestors}
                 </CustomButton>
               </motion.div>

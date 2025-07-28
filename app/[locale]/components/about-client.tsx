@@ -160,8 +160,8 @@ export default function AboutClient({ translations: t }: AboutClientProps) {
             >
               <div className="relative">
                 <Image
-                  src="/images/gwi-office.jpg"
-                  alt="GWI Team - Climbing new heights and achieving excellence"
+                  src="/images/TEST-office.jpg"
+                  alt="TEST Team - Climbing new heights and achieving excellence"
                   width={600}
                   height={700}
                   className="shadow-2xl object-cover"
@@ -172,7 +172,7 @@ export default function AboutClient({ translations: t }: AboutClientProps) {
                   animate={{ rotate: 360 }}
                   transition={{ duration: 30, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
                 >
-                  <span className="font-playfair text-white font-light text-2xl tracking-wide">GWI</span>
+                  <span className="font-playfair text-white font-light text-2xl tracking-wide">TEST</span>
                 </motion.div>
               </div>
             </motion.div>

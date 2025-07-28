@@ -1,6 +1,6 @@
-# GWI VC Website - Docker 部署指南
+# TEST VC Website - Docker 部署指南
 
-本指南将帮助您使用 Docker 部署 GWI VC 网站。
+本指南将帮助您使用 Docker 部署 TEST VC 网站。
 
 ## 📋 前提条件
 
@@ -13,8 +13,8 @@
 
 ```bash
 # 克隆仓库并进入目录
-git clone git@github.com:Littlesheepxy/GWI-VC.git
-cd GWI-VC
+git clone git@github.com:Littlesheepxy/TEST-VC.git
+cd TEST-VC
 
 # 使用 Docker Compose 启动
 docker-compose up -d --build
@@ -24,14 +24,14 @@ docker-compose up -d --build
 
 ```bash
 # 构建镜像
-docker build -t gwi-vc-website:latest .
+docker build -t TEST-vc-website:latest .
 
 # 运行容器
 docker run -d \
-  --name gwi-vc-website \
+  --name TEST-vc-website \
   -p 3000:3000 \
   --restart unless-stopped \
-  gwi-vc-website:latest
+  TEST-vc-website:latest
 ```
 
 ### 方法 3: 使用提供的脚本
@@ -95,7 +95,7 @@ chmod +x scripts/*.sh
 
 ### Docker Compose 服务
 
-1. **gwi-website**: Next.js 应用容器
+1. **TEST-website**: Next.js 应用容器
 2. **nginx**: 反向代理和静态文件服务
 
 ### Nginx 配置
@@ -116,14 +116,14 @@ docker-compose ps
 
 ### 查看日志
 ```bash
-docker logs gwi-vc-website
+docker logs TEST-vc-website
 # 或使用 docker-compose
 docker-compose logs -f
 ```
 
 ### 停止服务
 ```bash
-docker stop gwi-vc-website
+docker stop TEST-vc-website
 # 或使用 docker-compose
 docker-compose down
 ```
@@ -194,7 +194,7 @@ docker-compose up -d --build
 docker-compose up --build
 
 # 查看容器错误
-docker logs gwi-vc-website
+docker logs TEST-vc-website
 ```
 
 ## 🔄 更新部署

@@ -83,8 +83,8 @@ export default function NavigationClient({ translations: t, locale }: Navigation
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/GWI_white_text.png"
-                  alt="GWI Logo"
+                  src="/TEST_white_text.png"
+                  alt="TEST Logo"
                   width={160}
                   height={53}
                   className="h-12 w-auto"

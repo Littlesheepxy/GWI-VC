@@ -25,9 +25,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "GWI - Building the Future",
+  title: "TEST - Building the Future",
   description:
-    "GWI partners with visionary entrepreneurs to transform industries and create lasting impact across global markets.",
+    "TEST partners with visionary entrepreneurs to transform industries and create lasting impact across global markets.",
     generator: 'v0.dev'
 }
 

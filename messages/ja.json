@@ -29,11 +29,11 @@
     "ctaSubtitle": "未来を築く？",
     "ctaDescription": "AI、モバイル、ゲームの未来を形作る革新的な創設者のポートフォリオに参加してください。",
     "ctaContact": "お問い合わせ",
-    "ctaIncubator": "GWI Foundryに参加"
+    "ctaIncubator": "TEST Foundryに参加"
   },
   "about": {
     "heroTitle": "私たちについて",
-    "heroSubtitle": "GWI",
+    "heroSubtitle": "TEST",
     "heroDescription": "Global Wise Investmentsは、AIアプリケーション、モバイル製品、ゲームの投資機会に焦点を当てたベンチャーキャピタル会社です。",
     "missionTitle": "私たちのミッション",
     "missionDescription": "私たちのミッションは、投資家、ポートフォリオ会社、そしてより広いコミュニティを含むすべてのステークホルダーに対して、ポジティブな経済的インパクトと長期的価値を創造することです。",
@@ -48,10 +48,10 @@
     "focusMobileDesc": "ユーザーを繋ぎ、デジタル体験を変革する革新的なモバイルアプリケーションとプラットフォームに投資します。",
     "focusGaming": "ゲーミング",
     "focusGamingDesc": "創造的な境界を押し広げる次世代ゲーム体験とインタラクティブエンターテイメントを支援します。",
-    "foundryTitle": "GWI Foundry",
+    "foundryTitle": "TEST Foundry",
     "foundryDescription": "また、トップティアのマーケティングパートナーと協力して、製品/技術主導のスタートアップに資本、リソース、市場参入の専門知識でサポートを提供する創設者ファーストの専門インキュベーターを運営しています。",
-    "foundryDetail": "GWI Foundryは、製品重視の創設者向けに設計されたインキュベーションプログラムです。トップマーケティング会社との提携により、初期資本、戦略的ガイダンス、成長サポートを提供しています。",
-    "foundryButton": "GWI Foundryについて詳しく見る"
+    "foundryDetail": "TEST Foundryは、製品重視の創設者向けに設計されたインキュベーションプログラムです。トップマーケティング会社との提携により、初期資本、戦略的ガイダンス、成長サポートを提供しています。",
+    "foundryButton": "TEST Foundryについて詳しく見る"
   },
   "contact": {
     "heroTitle": "一緒に築こう",
@@ -106,12 +106,12 @@
     "joinButton": "募集職種を見る"
   },
   "incubator": {
-    "heroTitle": "GWI",
+    "heroTitle": "TEST",
     "heroSubtitle": "Foundry",
-    "heroDescription": "GWI Foundryは、製品重視の創設者向けに設計されたインキュベーションプログラムです。",
+    "heroDescription": "TEST Foundryは、製品重視の創設者向けに設計されたインキュベーションプログラムです。",
     "heroDetail": "トップマーケティング会社との提携により、初期資本、戦略的ガイダンス、成長サポートを提供しています。",
     "overviewTitle": "製品主導の創設者をエンパワー",
-    "overviewDescription": "GWI Foundryは、革新的なアイデアと市場成功の間のギャップを包括的なインキュベーションプログラムで橋渡しします。",
+    "overviewDescription": "TEST Foundryは、革新的なアイデアと市場成功の間のギャップを包括的なインキュベーションプログラムで橋渡しします。",
     "overviewDetail": "私たちはトップティアのマーケティングパートナーと協力して、創設者に資本だけでなく、画期的な製品を構築し効果的にスケールするために必要な戦略的専門知識とリソースを提供します。",
     "feature1": "初期段階の資本投資",
     "feature2": "戦略的製品開発ガイダンス",
@@ -132,7 +132,7 @@
     "networkDesc": "投資家、パートナー、顧客、業界リーダーの広範なネットワークへの接続。",
     "scalingTitle": "スケーリングサポート",
     "scalingDesc": "スタートアップが効率的かつ持続可能にスケールするための運営ガイダンスとリソース。",
-    "processTitle": "GWI Foundryに参加",
+    "processTitle": "TEST Foundryに参加",
     "processDescription": "革新的なアイデアを市場をリードする製品に変換する準備はできていますか？次のコホートへの参加を申し込んでください。",
     "step1Title": "申請",
     "step1Desc": "製品ビジョンとチーム詳細を含む申請書を提出",
@@ -142,7 +142,7 @@
     "step3Desc": "パートナーとあなたのビジョンと目標について話し合い",
     "step4Title": "オンボーディング",
     "step4Desc": "プログラムに参加し、加速成長の旅を開始",
-    "processButton": "GWI Foundryに申し込む",
+    "processButton": "TEST Foundryに申し込む",
     "ctaTitle": "構築する",
     "ctaSubtitle": "次世代",
     "ctaDescription": "AI、モバイル、ゲーム分野で画期的な製品を創造している革新的な創設者のコミュニティに参加してください。一緒に技術の未来を形作りましょう。",

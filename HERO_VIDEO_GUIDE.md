@@ -22,7 +22,7 @@ public/
     ├── hero-portfolio.jpg
     ├── hero-volcano.jpg
     ├── hero-mountains.jpg
-    └── gwi-office.jpg
+    └── TEST-office.jpg
 ```
 
 ## 🎯 推荐的视频规格

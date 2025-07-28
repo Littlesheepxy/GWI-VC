@@ -29,11 +29,11 @@
     "ctaSubtitle": "未来？",
     "ctaDescription": "加入我们的创新创始人投资组合，共同塑造AI、移动互联网和游戏的未来。",
     "ctaContact": "联系我们",
-    "ctaIncubator": "加入GWI孵化器"
+    "ctaIncubator": "加入TEST孵化器"
   },
   "about": {
     "heroTitle": "关于",
-    "heroSubtitle": "GWI",
+    "heroSubtitle": "TEST",
     "heroDescription": "全球智慧投资是一家专注于AI应用、移动产品和游戏投资机会的风险投资公司。",
     "missionTitle": "我们的使命",
     "missionDescription": "我们的使命是为所有利益相关者——包括我们的投资者、投资组合公司和更广泛的社区——创造积极的经济影响和长期价值。",
@@ -48,10 +48,10 @@
     "focusMobileDesc": "投资于连接用户并变革数字体验的创新移动应用程序和平台。",
     "focusGaming": "游戏",
     "focusGamingDesc": "支持突破创意边界的下一代游戏体验和互动娱乐。",
-    "foundryTitle": "GWI孵化器",
+    "foundryTitle": "TEST孵化器",
     "foundryDescription": "我们还与顶级营销合作伙伴合作，运营一个专门的创始人优先孵化器，为产品/技术驱动的初创公司提供资本、资源和市场推广专业知识支持。",
-    "foundryDetail": "GWI孵化器是我们为产品导向创始人设计的孵化项目。我们与顶级营销公司合作，提供早期资本、战略指导和增长支持。",
-    "foundryButton": "了解更多关于GWI孵化器"
+    "foundryDetail": "TEST孵化器是我们为产品导向创始人设计的孵化项目。我们与顶级营销公司合作，提供早期资本、战略指导和增长支持。",
+    "foundryButton": "了解更多关于TEST孵化器"
   },
   "contact": {
     "heroTitle": "让我们一起",
@@ -104,12 +104,12 @@
     "joinButton": "查看开放职位"
   },
   "incubator": {
-    "heroTitle": "GWI",
+    "heroTitle": "TEST",
     "heroSubtitle": "孵化器",
-    "heroDescription": "GWI孵化器是我们为产品导向创始人设计的孵化项目。",
+    "heroDescription": "TEST孵化器是我们为产品导向创始人设计的孵化项目。",
     "heroDetail": "我们与顶级营销公司合作，提供早期资本、战略指导和增长支持。",
     "overviewTitle": "赋能产品驱动的创始人",
-    "overviewDescription": "GWI孵化器通过我们全面的孵化项目，弥合创新想法与市场成功之间的差距。",
+    "overviewDescription": "TEST孵化器通过我们全面的孵化项目，弥合创新想法与市场成功之间的差距。",
     "overviewDetail": "我们与顶级营销合作伙伴合作，不仅为创始人提供资本，还提供构建突破性产品和有效扩展所需的战略专业知识和资源。",
     "feature1": "早期资本投资",
     "feature2": "战略产品开发指导",
@@ -130,7 +130,7 @@
     "networkDesc": "连接我们广泛的投资者、合作伙伴、客户和行业领袖网络。",
     "scalingTitle": "扩展支持",
     "scalingDesc": "运营指导和资源，帮助初创公司高效且可持续地扩展。",
-    "processTitle": "加入GWI孵化器",
+    "processTitle": "加入TEST孵化器",
     "processDescription": "准备好将您的创新想法转化为市场领先的产品？申请加入我们的下一期项目。",
     "step1Title": "申请",
     "step1Desc": "提交包含产品愿景和团队详情的申请",
@@ -140,7 +140,7 @@
     "step3Desc": "与我们的合作伙伴会面，讨论您的愿景和目标",
     "step4Title": "入驻",
     "step4Desc": "加入项目并开始您的加速增长之旅",
-    "processButton": "申请GWI孵化器",
+    "processButton": "申请TEST孵化器",
     "ctaTitle": "构建",
     "ctaSubtitle": "下一代",
     "ctaDescription": "加入一个正在AI、移动互联网和游戏领域创造突破性产品的创新创始人社区。我们一起塑造技术的未来。",

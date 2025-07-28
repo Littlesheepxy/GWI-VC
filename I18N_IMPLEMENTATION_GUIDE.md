@@ -1,4 +1,4 @@
-# 🌍 GWI 网站国际化实施指南
+# 🌍 TEST 网站国际化实施指南
 
 ## 📋 项目概述
 
@@ -25,7 +25,7 @@
 
 ### 文件结构
 ```
-gwi-vc-website/
+TEST-vc-website/
 ├── app/
 │   ├── [locale]/           # 动态语言路由
 │   │   ├── layout.tsx      # 语言特定布局

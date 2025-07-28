@@ -222,7 +222,7 @@ export default function IncubatorClient({ translations: t }: IncubatorClientProp
               <div className="relative">
                 <Image
                   src="/placeholder.svg?height=600&width=500"
-                  alt="GWI Foundry Workspace"
+                  alt="TEST Foundry Workspace"
                   width={500}
                   height={600}
                   className="shadow-2xl"

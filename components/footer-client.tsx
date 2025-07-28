@@ -38,8 +38,8 @@ export default function FooterClient({ translations: t, locale }: FooterClientPr
             <div className="mb-4">
               <Link href={getLocalizedHref("/")}>
                 <Image
-                  src="/GWI_white_text.png"
-                  alt="GWI Logo"
+                  src="/TEST_white_text.png"
+                  alt="TEST Logo"
                   width={120}
                   height={40}
                   className="h-8 w-auto"
@@ -119,8 +119,8 @@ export default function FooterClient({ translations: t, locale }: FooterClientPr
               <p>Hong Kong</p>
               <p>San Francisco</p>
               <p className="pt-2">
-                <Link href="mailto:hello@gwi.vc" className="hover:text-white transition-colors">
-                  hello@gwi.vc
+                <Link href="mailto:hello@TEST.vc" className="hover:text-white transition-colors">
+                  hello@TEST.vc
                 </Link>
               </p>
             </div>

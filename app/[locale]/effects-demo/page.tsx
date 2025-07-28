@@ -52,8 +52,8 @@ export default function EffectsDemo() {
             <p className="text-gray-400 mb-8">轻柔的上下浮动，增加生动感</p>
             <div className="flex justify-center">
               <FloatingImage 
-                src="/images/gwi-office.jpg"
-                alt="GWI办公室"
+                src="/images/TEST-office.jpg"
+                alt="TEST办公室"
                 floatRange={15}
                 duration={5}
                 className="rounded-lg overflow-hidden"
@@ -135,7 +135,7 @@ export default function EffectsDemo() {
             <p className="text-gray-400 mb-8">专为创投基金设计的高级光效</p>
             <div className="flex justify-center">
               <WealthGlowImage 
-                src="/images/gwi-office.jpg"
+                src="/images/TEST-office.jpg"
                 alt="财富办公环境"
                 glowColor="#00A651"
                 intensity={25}

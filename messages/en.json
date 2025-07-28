@@ -29,11 +29,11 @@
     "ctaSubtitle": "Future?",
     "ctaDescription": "Join our portfolio of innovative founders who are shaping the future of AI, mobile, and gaming.",
     "ctaContact": "Get in Touch",
-    "ctaIncubator": "Join GWI Foundry"
+    "ctaIncubator": "Join TEST Foundry"
   },
   "about": {
     "heroTitle": "About",
-    "heroSubtitle": "GWI",
+    "heroSubtitle": "TEST",
     "heroDescription": "Global Wise Investments is a venture capital firm focused on investment opportunities in AI applications, mobile products, and gaming.",
     "missionTitle": "Our Mission",
     "missionDescription": "Our mission is to create positive economic impact and long-term value for all stakeholders — including our investors, portfolio companies, and the broader community.",
@@ -48,10 +48,10 @@
     "focusMobileDesc": "Investing in innovative mobile applications and platforms that connect users and transform digital experiences.",
     "focusGaming": "Gaming",
     "focusGamingDesc": "Backing next-generation gaming experiences and interactive entertainment that push creative boundaries.",
-    "foundryTitle": "GWI Foundry",
+    "foundryTitle": "TEST Foundry",
     "foundryDescription": "We also collaborate with top-tier marketing partners to run a specialized founder-first incubator that supports product/tech-driven startups with capital, resources, and go-to-market expertise.",
-    "foundryDetail": "GWI Foundry is our incubation program designed for product-focused founders. We offer early capital, strategic guidance, and growth support in partnership with top marketing firms.",
-    "foundryButton": "Learn More About GWI Foundry"
+    "foundryDetail": "TEST Foundry is our incubation program designed for product-focused founders. We offer early capital, strategic guidance, and growth support in partnership with top marketing firms.",
+    "foundryButton": "Learn More About TEST Foundry"
   },
   "contact": {
     "heroTitle": "Let's Build the",
@@ -104,12 +104,12 @@
     "joinButton": "View Open Positions"
   },
   "incubator": {
-    "heroTitle": "GWI",
+    "heroTitle": "TEST",
     "heroSubtitle": "Foundry",
-    "heroDescription": "GWI Foundry is our incubation program designed for product-focused founders.",
+    "heroDescription": "TEST Foundry is our incubation program designed for product-focused founders.",
     "heroDetail": "We offer early capital, strategic guidance, and growth support in partnership with top marketing firms.",
     "overviewTitle": "Empowering Product-Driven Founders",
-    "overviewDescription": "GWI Foundry bridges the gap between innovative ideas and market success through our comprehensive incubation program.",
+    "overviewDescription": "TEST Foundry bridges the gap between innovative ideas and market success through our comprehensive incubation program.",
     "overviewDetail": "We collaborate with top-tier marketing partners to provide founders with not just capital, but the strategic expertise and resources needed to build breakthrough products and scale effectively.",
     "feature1": "Early-stage capital investment",
     "feature2": "Strategic product development guidance",
@@ -130,7 +130,7 @@
     "networkDesc": "Connection to our extensive network of investors, partners, customers, and industry leaders.",
     "scalingTitle": "Scaling Support",
     "scalingDesc": "Operational guidance and resources to help startups scale efficiently and sustainably.",
-    "processTitle": "Join GWI Foundry",
+    "processTitle": "Join TEST Foundry",
     "processDescription": "Ready to transform your innovative idea into a market-leading product? Apply to join our next cohort.",
     "step1Title": "Application",
     "step1Desc": "Submit your application with product vision and team details",
@@ -140,7 +140,7 @@
     "step3Desc": "Meet with our partners to discuss your vision and goals",
     "step4Title": "Onboarding",
     "step4Desc": "Join the program and begin your accelerated growth journey",
-    "processButton": "Apply to GWI Foundry",
+    "processButton": "Apply to TEST Foundry",
     "ctaTitle": "Building the",
     "ctaSubtitle": "Next Generation",
     "ctaDescription": "Join a community of innovative founders who are creating breakthrough products in AI, mobile, and gaming. Together, we're shaping the future of technology.",
